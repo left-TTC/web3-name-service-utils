@@ -11,12 +11,19 @@ pub enum SupportedToken {
     FWC,
 }
 
-const USDC_MINT: Pubkey = pubkey!("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
-const USDT_MINT: Pubkey = pubkey!("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
+
+//mainnet
+// const USDC_MINT: Pubkey = pubkey!("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
+// const USDT_MINT: Pubkey = pubkey!("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
+// const SOL_MINT: Pubkey = pubkey!("So11111111111111111111111111111111111111112");
+// const FIDA_MINT: Pubkey = pubkey!("FLEYqPkSSUoZXywYaKoN7eRPDFWDM6THLz2kuW9zKwHE");
+
+//test devnet
+const USDC_MINT: Pubkey = pubkey!("4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU");
+const USDT_MINT: Pubkey = pubkey!("EJwZgeZrdC8TXTQbQBoL6bfuAnFUUy1PVCMB4DYPzVaS");
 const SOL_MINT: Pubkey = pubkey!("So11111111111111111111111111111111111111112");
-const FIDA_MINT: Pubkey = pubkey!("EchesyfXePKdLtoiZSL8pBe8Myagyy8ZRqsACNCFGnvp");
-//test
-const FWC_MINT: Pubkey = pubkey!("Dpw1EAVrSB1ibxiDQyTAW6Zip3J4Btk2x4SgApQCeFbX");
+const FIDA_MINT: Pubkey = pubkey!("fidaWCioBQjieRrUQDxxS5Uxmq1CLi2VuVRyv4dEBey");
+const FWC_MINT: Pubkey = pubkey!("FLEYqPkSSUoZXywYaKoN7eRPDFWDM6THLz2kuW9zKwHE");
 
 impl SupportedToken {
     pub const fn mint(self) -> Pubkey {
