@@ -5,6 +5,7 @@ authors = ["Fan Mocheng <leftear1321.@gmail.com>"]
 license = "MIT"
 edition = "2021"
 repository = "https://github.com/git@github.com:left-TTC/web3-name-service-utils.git"
+description = "A utility crate for web3 name service operations, forked from bonfida/utils" 
 
 
 [features]
