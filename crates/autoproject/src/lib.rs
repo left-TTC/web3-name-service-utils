@@ -1,0 +1,116 @@
+use clap::{crate_name, crate_version, Arg, ArgMatches, Command};
+use convert_case::{Case, Casing};
+use fs_extra::dir::get_dir_content;
+use include_dir::{include_dir, Dir};
+use path_absolutize::Absolutize;
+
+use std::{
+    ffi::OsStr,
+    fs::{self, OpenOptions},
+    io::Write,
+    path::PathBuf,
+    str::FromStr,
+    time::Instant,
+};
+
+const CASE_STR_ID: [&str; 4] = [
+    "TOBEREPLACEDBY_UPPERSNAKE",
+    "TOBEREPLACEDBY_LOWERSNAKE",
+    "TOBEREPLACEDBY_KEBAB",
+    "TOBEREPLACEDBY_PASCAL",
+];
+
+const TEMPLATE: Dir<'_> = include_dir!("$CARGO_MANIFEST_DIR/src/template");
+
+pub fn command() -> Command<'static> {
+    Command::new(crate_name!())
+        .version(crate_version!())
+        .author("Bonfida")
+        .about("Initialize a new project")
+        .arg(
+            Arg::new("name")
+                .required(true)
+                .takes_value(true)
+                .help("The new project's name"),
+        )
+        .arg(
+            Arg::new("new-project-path")
+                .long("path")
+                .short('p')
+                .takes_value(true)
+                .required(false)
+                .help("Path in which to create the new project. Default to current directory."),
+        )
+}
+
+pub fn process(matches: &ArgMatches) {
+    let project_name = matches.value_of("name").unwrap();
+    let project_path = matches.value_of("new-project-path").unwrap_or(".");
+
+    if !project_name.is_case(Case::Kebab) {
+        println!("Project name should be given in-kebab-case.");
+        panic!();
+    };
+
+    generate(project_name, project_path);
+}
+
+pub fn generate(project_name: &str, project_path: &str) {
+    let now = Instant::now();
+
+    let mut project_dir = std::path::PathBuf::from_str(project_path).unwrap();
+    project_dir.push(project_name);
+
+    let project_dir = project_dir.absolutize().unwrap();
+
+    println!("{:?}", project_dir);
+
+    // return;
+
+    fs::create_dir_all(&project_dir).unwrap();
+
+    TEMPLATE.extract(&project_dir).unwrap();
+
+    let directory = get_dir_content(project_dir).unwrap().files;
+
+    for file_path_str in directory {
+        let mut file_path = PathBuf::from(file_path_str);
+        eprintln!("{file_path:?}");
+        if file_path.file_name() == Some(OsStr::new("_Cargo.toml")) {
+            let mut new_file_path = file_path.to_owned();
+            new_file_path.set_file_name("Cargo.toml");
+            std::fs::rename(file_path, &new_file_path).unwrap();
+            file_path = new_file_path;
+        }
+        let mut raw_file = std::fs::read_to_string(&file_path).unwrap();
+
+        for case_id_str in CASE_STR_ID.iter() {
+            raw_file = raw_file.replace(
+                case_id_str,
+                &project_name
+                    .from_case(Case::Kebab)
+                    .to_case(get_case_from_id(case_id_str)),
+            );
+        }
+
+        let mut out_file = OpenOptions::new()
+            .write(true)
+            .truncate(true)
+            .open(file_path)
+            .unwrap();
+        out_file.write_all(raw_file.as_bytes()).unwrap();
+    }
+
+    let elapsed = now.elapsed();
+    println!("✨  Done in {:.2?}", elapsed);
+}
+
+fn get_case_from_id(id_str: &str) -> Case {
+    match id_str {
+        "TOBEREPLACEDBY_UPPERSNAKE" => Case::UpperSnake,
+        "TOBEREPLACEDBY_LOWERSNAKE" => Case::Snake,
+        "TOBEREPLACEDBY_KEBAB" => Case::Kebab,
+        "TOBEREPLACEDBY_PASCAL" => Case::Pascal,
+        _ => panic!(),
+    }
+}
