@@ -60,9 +60,9 @@ impl SupportedToken {
     //price feed account key on the pyth
     pub const fn price_feed_account_key(self) -> Pubkey {
         match self {
-            SupportedToken::USDC => pubkey!("Dpw1EAVrSB1ibxiDQyTAW6Zip3J4Btk2x4SgApQCeFbX"),
-            SupportedToken::USDT => pubkey!("HT2PLQBcG5EiCcNSaMHAjSgd9F98ecpATbk4Sk5oYuM"),
-            SupportedToken::Sol => pubkey!("7UVimffxr9ow1uXYxsr4LHAcV58mLzhmwaeKvJ1pjLiE"),
+            SupportedToken::USDC => pubkey!("6NpdXrQEpmDZ3jZKmM2rhdmkd3H6QAk23j2x8bkXcHKA"),
+            SupportedToken::USDT => pubkey!("C5wDxND9E61RZ1wZhaSTWkoA8udumaHnoQY6BBsiaVpn"),
+            SupportedToken::Sol => pubkey!("3Mnn2fX6rQyUsyELYms1sBJyChWofzSNRoqYzvgMVz5E"),
             SupportedToken::Fida => pubkey!("2cfmeuVBf7bvBJcjKBQgAwfvpUvdZV7K8NZxUEuccrub"),
             //test
             SupportedToken::FWC => pubkey!("Dpw1EAVrSB1ibxiDQyTAW6Zip3J4Btk2x4SgApQCeFbX"),
@@ -72,16 +72,17 @@ impl SupportedToken {
     pub const fn price_feed(self) -> [u8; 32] {
         match self {
             SupportedToken::USDC => [
-                234, 160, 32, 198, 28, 196, 121, 113, 40, 19, 70, 28, 225, 83, 137, 74, 150, 166,
-                192, 11, 33, 237, 12, 252, 39, 152, 209, 249, 169, 233, 201, 74,
+                234, 160, 32, 198, 28, 196, 121, 113, 40, 19, 70, 28,
+                225, 83, 137, 74, 150, 166, 192, 11, 33, 237, 12, 252,
+                39, 152, 209, 249, 169, 233, 201, 74
             ],
             SupportedToken::USDT => [
                 43, 137, 185, 220, 143, 223, 159, 52, 112, 154, 91, 16, 107, 71, 47, 15, 57, 187,
-                108, 169, 206, 4, 176, 253, 127, 46, 151, 22, 136, 226, 229, 59,
+                108, 169, 206, 4, 176, 253, 127, 46, 151, 22, 136, 226, 229, 59
             ],
             SupportedToken::Sol => [
-                239, 13, 139, 111, 218, 44, 235, 164, 29, 161, 93, 64, 149, 209, 218, 57, 42, 13,
-                47, 142, 208, 198, 199, 188, 15, 76, 250, 200, 194, 128, 181, 109,
+                239, 13, 139, 111, 218, 44, 235, 164, 29, 161, 93, 64, 149, 209, 218, 57, 42, 13, 
+                47, 142, 208, 198, 199, 188, 15, 76, 250, 200, 194, 128, 181, 109
             ],
             SupportedToken::Fida => [
                 200, 6, 87, 183, 246, 243, 234, 194, 114, 24, 208, 157, 90, 78, 84, 228, 123, 37,
