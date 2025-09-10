@@ -1,6 +1,6 @@
 [package]
 name = "web3-name-service-utils"
-version = "0.0.5"
+version = "0.0.6"
 authors = ["Fan Mocheng <leftear1321.@gmail.com>"]
 license = "MIT"
 edition = "2021"
@@ -16,7 +16,7 @@ benchmarking = ["lazy_static", "regex", "serde", "serde_json"]
 borsh = "0.10.3"
 solana-program = "2.1.14"
 pyth-sdk-solana = "0.4.2"
-web3-macros = "0.0.1"
+web3-macros = "0.0.2"
 bytemuck = "1.9.1"
 lazy_static = {version = "1.4.0", optional=true}
 regex = {version = "1.5.5", optional=true}
