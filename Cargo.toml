@@ -1,4 +1,11 @@
 [workspace]
-members = ["crates/*"]
+members = ["crates/*", "crates/utils", "crates/macros"]
 exclude = ["crates/autoproject/src/template"]
 resolver = "2"
+
+
+[workspace.dependencies]
+zeroize = "1.8.1"
+
+[patch.crates-io]
+zeroize = "=1.8.1"

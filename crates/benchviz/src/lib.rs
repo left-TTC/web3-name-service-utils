@@ -3,7 +3,7 @@ use std::{
     fs::{read_dir, DirBuilder, File},
 };
 
-use bonfida_utils::bench::Measures;
+use web3_name_service_utils::bench::Measures;
 use clap::{crate_name, crate_version, ArgMatches, Command};
 use gnuplot::{Figure, PlotOption};
 use regex::Regex;
