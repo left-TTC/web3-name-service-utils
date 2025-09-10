@@ -169,7 +169,7 @@ pub fn process(mut ast: syn::DeriveInput, is_mut: bool) -> TokenStream {
                             }
                             lengths.push(len);
                         }
-                        e => panic!("Unsupported type : {:?}", e),
+                        e => panic!("Unsupported"),
                     }
                 } else {
                     panic!("{}", line!())
