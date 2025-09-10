@@ -1,6 +1,6 @@
 [package]
 name = "web3-name-service-utils"
-version = "0.0.4"
+version = "0.0.5"
 authors = ["Fan Mocheng <leftear1321.@gmail.com>"]
 license = "MIT"
 edition = "2021"
