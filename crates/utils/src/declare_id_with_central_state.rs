@@ -5,7 +5,7 @@ mod tests {
     use solana_program::pubkey::Pubkey;
 
     mod test_context {
-        use bonfida_macros::declare_id_with_central_state;
+        use web3_macros::declare_id_with_central_state;
         declare_id_with_central_state!("perpke6JybKfRDitCmnazpCrGN5JRApxxukhA9Js6E6");
     }
 
