@@ -1,5 +1,5 @@
 use quote::quote;
-use spl_name_service::state::HASH_PREFIX;
+use web3_name_service::state::HASH_PREFIX;
 
 use proc_macro2::{Span, TokenStream};
 use solana_program::hash::hashv;
