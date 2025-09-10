@@ -16,7 +16,7 @@ benchmarking = ["lazy_static", "regex", "serde", "serde_json"]
 borsh = "0.10.3"
 solana-program = "2.1.14"
 pyth-sdk-solana = "0.4.2"
-bonfida-macros = {version = "0.6.6", path = "../macros"}
+web3-macros = {version = "0.6.6", path = "../macros"}
 bytemuck = "1.9.1"
 lazy_static = {version = "1.4.0", optional=true}
 regex = {version = "1.5.5", optional=true}
