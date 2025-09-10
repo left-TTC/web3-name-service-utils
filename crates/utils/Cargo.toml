@@ -4,9 +4,8 @@ version = "0.0.6"
 authors = ["Fan Mocheng <leftear1321.@gmail.com>"]
 license = "MIT"
 edition = "2021"
-repository = "https://github.com/git@github.com:left-TTC/web3-name-service-utils.git"
+repository = "https://github.com/left-TTC/web3-name-service-utils.git"
 description = "A utility crate for web3 name service operations, forked from bonfida/utils" 
-
 
 [features]
 mock-oracle = []
@@ -14,18 +13,23 @@ benchmarking = ["lazy_static", "regex", "serde", "serde_json"]
 
 [dependencies]
 borsh = "0.10.3"
-solana-program = "2.1.14"
-pyth-sdk-solana = "0.4.2"
-web3-macros = "0.0.2"
 bytemuck = "1.9.1"
-lazy_static = {version = "1.4.0", optional=true}
-regex = {version = "1.5.5", optional=true}
-serde = {version = "1.0.136", features=["derive"], optional=true}
-serde_json = {version = "1.0.79",  optional=true}
-spl-token = {version = "=4.0.0", features = ["no-entrypoint"]}
+pyth-sdk-solana = "0.4.2"
 pyth-solana-receiver-sdk = "0.3.0"
+web3-macros = "0.0.2"
+
+solana-program = "2.1.14"
+spl-token = { version = "5.0.1", features = ["no-entrypoint"] }
+spl-associated-token-account = "3.0.2"
+
+lazy_static = { version = "1.4.0", optional = true }
+regex = { version = "1.10.4", optional = true }
+serde = { version = "1.0.203", features = ["derive"], optional = true }
+serde_json = { version = "1.0.117", optional = true }
 
 [dev-dependencies]
 solana-client = "2.1.14"
+solana-sdk = "2.1.14"
 hex = "0.4.3"
 rand = "0.8.5"
+
