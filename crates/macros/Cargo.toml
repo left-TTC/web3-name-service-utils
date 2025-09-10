@@ -1,6 +1,6 @@
 [package]
 name = "web3-macros"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["Fan Mocheng <leftear1321.@gmail.com>"]
 edition = "2021"
 description = "rename from Bonfida-utils macros"
